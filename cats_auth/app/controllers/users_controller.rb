@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :already_logged_in, only: [:new,:create]
+  before_action :already_logged_in, only: [:new, :create]
 
   def new
     render :new
@@ -7,9 +7,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.ensure_session_token
+    # debugger
     if @user.save 
       login_user!
-      redirect_to user_url(@user)
+      redirect_to cats_url
     else
       render :new
     end

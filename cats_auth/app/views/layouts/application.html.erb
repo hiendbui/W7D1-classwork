@@ -10,17 +10,17 @@
 
   <body>
     <% if self.logged_in? %>
-      <h1><%= @current_user.user_name %></h1>
+      <h1><%= current_user.user_name %></h1>
       <form action="<%= session_url %>" method="POST">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="button" value="Log Out">
+        <input type="submit" value="Log Out">
       </form>
     <% else %>
       <form action="<%= new_session_url %>" method="GET">
-        <input type="button" value="Sign-in">
+        <input type="submit" value="Sign-in">
       </form>
       <form action="<%= new_user_url %>" method="GET">
-        <input type="button" value="Sign-up">
+        <input type="submit" value="Sign-up">
       </form>
     <% end %>
     
